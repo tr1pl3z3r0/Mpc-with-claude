@@ -28,7 +28,7 @@ Plecs {
   AlgebraicLoopWithStateMachineMsg "2"
   AssertionAction "1"
   FixedPointDatatypeOverride "1"
-  InitializationCommands "fcr = 5000\nTsc=1/(2*fcr);\nC = 1\nVc = 148\nE = 450"
+  InitializationCommands "fcr = 5000\nTsc=1/(2*fcr);\nC = 1\nVc = 150\nE = 450"
 "\nV0m = 200\nL = 2.5e-3\nLl = 1e-3\nRl = 1\nn = 1"
   InitialState  "1"
   SystemState   ""
@@ -8571,7 +8571,7 @@ Plecs {
               }
               Parameter {
                 Variable      "NumInputs"
-                Value         "[4 1]"
+                Value         "[4 23]"
                 Show          off
               }
               Parameter {
@@ -8637,88 +8637,154 @@ Plecs {
               Parameter {
                 Variable      "Declarations"
                 Value         base64 "I2luY2x1ZGU8bWF0aC5oPgojaW5jbHVkZSA8c3Rk"
-"aW8uaD4gCiNpbmNsdWRlIDxzdGRsaWIuaD4gCiNkZWZpbmUgdHJ1ZSAxCiNkZWZpbmUgZmFsc2UgM"
-"AojZGVmaW5lIEVQUyAwLjAwMDEgLy9Ub2xlcmFuY2lhCiAvL2hvcml6b250ZQojZGVmaW5lIE5yb3"
-"dBIDQgLy8gRG9ibGUgZGUgTnJvd0cKI2RlZmluZSBpbnB0IDIKI2RlZmluZSBUc2MgMTAwZS02CiN"
-"kZWZpbmUgTCAyLjVlLTMgCiNkZWZpbmUgUV9WQUwgMQojZGVmaW5lIE5yb3dHIDIKI2RlZmluZSBS"
-"X1ZBTCAxLygxMDAwKQpkb3VibGUgWGVxW05yb3dHXTsKZG91YmxlIGJ1Zl8xW05yb3dHLzJdOyAgL"
-"y8gaGlzdG9yaWFsIHNlw7FhbCAxCmRvdWJsZSBidWZfMltOcm93Ry8yXTsgIC8vIGhpc3RvcmlhbC"
-"BzZcOxYWwgMgpkb3VibGUgdGhlOyAvLyBBbmd1bG8gcGFyYSBhZGVsYW50YW1pZW50byBOTyBBQ1R"
-"JVk8gU0kgTk8gU0UgREVTQ09NRU5UQSBMTyBERSBBQkFKTwoKdm9pZCBmaWxsX1hlcSh2b2lkKSB7"
-"CiAgICBpbnQgazsKICAgIC8vIFNoaWZ0YXIgZWwgYnVmZmVyIChtb3ZlciB2YWxvcmVzIGFsIHBhc"
-"2FkbykKICAgIGZvciAoayA9IE5yb3dHLzIgLSAxOyBrID4gMDsgay0tKSB7CiAgICAgICAgYnVmXz"
-"Fba10gPSBidWZfMVtrLTFdOwogICAgICAgIGJ1Zl8yW2tdID0gYnVmXzJbay0xXTsKICAgIH0KICA"
-"gIC8vIEVsIHZhbG9yIGFjdHVhbCB2aWVuZSBkZSBsYSByZXRyb2FsaW1lbnRhY2lvbiBlbiBYZXFb"
-"MF0geSBYZXFbMV0KICAgIGJ1Zl8xWzBdID0gWGVxWzBdOwogICAgYnVmXzJbMF0gPSBYZXFbMV07C"
-"gogICAgLy8gTGxlbmFyIFhlcSBjb24gbG9zIHZhbG9yZXMgZGVsIGJ1ZmZlcgogICAgZm9yIChrID"
-"0gMDsgayA8IE5yb3dHLzI7IGsrKykgewogICAgICAgIFhlcVsyKmtdICAgICA9IGJ1Zl8xW2tdOyA"
-"gLy8gcGFyZXM6ICAgYXRyYXNvIGsqdHNjCiAgICAgICAgWGVxWzIqayArIDFdID0gYnVmXzJba107"
-"ICAvLyBpbXBhcmVzOiBhdHJhc28gayp0c2MKICAgIH0KfQoKLy8gTm8gdXRpbGl6YXIgYnVmZmVyc"
-"ywgYWhvcmEgYWRlbGFudGFyIGFzdW1pZW5kbyBxdWUgc29uIHNlbm9pZGFsZXMKLyoKZG91YmxlIG"
-"lhbHBoYV92ZWMgW05yb3dHLzJdOyAKZG91YmxlIGliZXRhX3ZlYyBbTnJvd0cvMl07IAoKdm9pZCB"
-"maWxsX1hlcSh2b2lkKSB7CglpYWxwaGFfdmVjIFswXSA9IFhlcVswXTsgCglpYmV0YV92ZWMgWzBd"
-"ID0gWGVxWzFdOwoJCiAgIGlmKE5yb3dHID49IDQpewoJCWZvciAoaW50IGkgPSAxOyBpIDwgTnJvd"
-"0cvMjsgaSsrKXsJCiAgICAgIAlpYWxwaGFfdmVjIFtpXSA9IGlhbHBoYV92ZWNbaS0xXSpjb3ModG"
-"hlKSAtIGliZXRhX3ZlY1tpLTFdKnNpbih0aGUpOwogICAgICAgIAlpYmV0YV92ZWMgW2ldID0gaWF"
-"scGhhX3ZlY1tpLTFdKnNpbih0aGUpICsgaWJldGFfdmVjW2ktMV0qY29zKHRoZSk7CiAgIAl9Cgl9"
-"CgkvLyBMbGVuYXIgWGVxIGNvbiBsb3MgdmFsb3JlcwogICBmb3IgKGludCBrID0gMTsgayA8IE5yb"
-"3dHLzI7IGsrKykgewogICAgICAgIFhlcVsyKmtdICAgICA9IGlhbHBoYV92ZWNba107ICAvLyBwYX"
-"JlcwogICAgICAgIFhlcVsyKmsgKyAxXSA9IGliZXRhX3ZlY1trXTsgIC8vIGltcGFyZXMKICAgfQo"
-"JCn0qLwoKCgpkb3VibGUgR1tOcm93R11bTnJvd0ddID0gewogICAgMH07CgoKZG91YmxlIFRfdHJh"
-"bnNbTnJvd0ddW05yb3dHXSA9IHswfTsKCmRvdWJsZSBTW05yb3dHXVsyXSA9IHswCiAgICAKfTsKC"
-"mRvdWJsZSBSW05yb3dHXVtOcm93R10gPSB7MH07Cgpkb3VibGUgUVtOcm93R11bTnJvd0ddID0gez"
-"AKfTsKCiAgICAKdm9pZCBTdGFydCh2b2lkKSB7CgogICAgZG91YmxlIHZhbCA9IC1Uc2MvTDsKICA"
-"gIGludCBOYmxvY2tzID0gTnJvd0cgLyAyOwoKZm9yIChpbnQgaSA9IDA7IGkgPCBOcm93RzsgaSsr"
-"KXsKICAgICAgICBmb3IgKGludCBqID0gMDsgaiA8IE5yb3dHOyBqKyspewogICAgICAgICAgICBUX"
-"3RyYW5zW2ldW2pdID0gMC4wO319CgogICAgLy8gTGxlbmFyIGJsb3F1ZXMgdHJpYW5ndWxhciBzdX"
-"BlcmlvcjogQV4oai1pKSpCID0gQiBwYXJhIGogPj0gaQogICAgZm9yIChpbnQgYmkgPSAwOyBiaSA"
-"8IE5ibG9ja3M7IGJpKyspIHsKICAgICAgICBmb3IgKGludCBiaiA9IGJpOyBiaiA8IE5ibG9ja3M7"
-"IGJqKyspIHsKICAgICAgICAgICAgLy8gQmxvcXVlIEIgZW4gcG9zaWNpb24gKGJpLCBiaikKICAgI"
-"CAgICAgICAgVF90cmFuc1syKmJpXVsyKmJqXSAgICAgICAgID0gdmFsOyAgLy8gQlswXVswXQogIC"
-"AgICAgICAgICBUX3RyYW5zWzIqYmkrMV1bMipiaisxXSAgICAgPSB2YWw7ICAvLyBCWzFdWzFdCiA"
-"gICAgICAgICAgIC8vIEIgZXMgZGlhZ29uYWwsIGVudG9uY2VzIEJbMF1bMV0gPSBCWzFdWzBdID0g"
-"MAogICAgICAgIH0KICAgIH0KCiAgICAgZm9yIChpbnQgaSA9IDA7IGkgPCBOcm93RzsgaSsrKQogI"
-"CAgICAgeyBSW2ldW2ldID0gUl9WQUw7CiAgICAgICBRW2ldW2ldID0gUV9WQUw7fQogICAgIGZvci"
-"AoaW50IGsgPSAwOyBrIDwgTnJvd0cvMjsgaysrKSB7CiAgICAgICAgU1syKmtdWzBdICAgPSAxLjA"
-"7ICBTWzIqa11bMV0gICA9IDAuMDsgIC8vIGZpbGEgcGFyOiAgIHsxLCAwfQogICAgICAgIFNbMipr"
-"KzFdWzBdID0gMC4wOyAgU1syKmsrMV1bMV0gPSAxLjA7ICAvLyBmaWxhIGltcGFyOiB7MCwgMX0KI"
-"CAgIH0KfQp2b2lkIGZpbGxfRygpIHsKICAgIGZvciAoaW50IGkgPSAwOyBpIDwgTnJvd0c7IGkrKy"
-"kgewogICAgICAgIGZvciAoaW50IGogPSAwOyBqIDwgTnJvd0c7IGorKykgewogICAgICAgICAgICB"
-"kb3VibGUgc3VtID0gMC4wOwogICAgICAgICAgICBmb3IgKGludCBrID0gMDsgayA8IE5yb3dHOyBr"
-"KyspCiAgICAgICAgICAgICAgICBzdW0gKz0gVF90cmFuc1tpXVtrXSAqIFFfVkFMICogVF90cmFuc"
-"1tqXVtrXTsKICAgICAgICAgICAgR1tpXVtqXSA9IDIuMCAqIHN1bTsKICAgICAgICB9CiAgICAgIC"
-"AgR1tpXVtpXSArPSAyLjAgKiBSX1ZBTDsKICAgIH0KCn0KCi8vZG91YmxlIEFbTnJvd0FdW05yb3d"
-"HXSA9IHt7MSwgMH0sezAsIDF9LHstMSwgMH0sezAsIC0xfX07IC8vUmVzdHJpY2Npb25lcyBkZSAr"
-"LSAxIGVuIGFtYmFzIGFjY2lvbmVzIGRlIGNvbnRyb2wKCmRvdWJsZSBBW05yb3dBXVtOcm93R10gP"
-"SB7MH07Cgpkb3VibGUgYltOcm93QV0gPSB7MH07Cgp2b2lkIE1hdHJpY2VzQ29uc3RyYWludHMoKX"
-"sKCmZvciAoaW50IGkgPSAwOyBpIDwgTnJvd0c7IGkrKykKewogICAgQVtpXVtpXSA9IDAuMDsgICA"
-"gICAgIC8vIHBhcnRlIHN1cGVyaW9yCiAgICBBW2kgKyBOcm93R11baV0gPSAtMC4wOyAgIC8vIHBh"
-"cnRlIGluZmVyaW9yCn0KCmZvciAoaW50IGkgPSAwOyBpIDwgTnJvd0E7IGkrKykKewogICAgYltpX"
-"SA9IDAuMDsgICAgICAgIAp9Cn0KCmRvdWJsZSBYa1tOcm93R107CmRvdWJsZSBYZXFbTnJvd0ddOw"
-"pkb3VibGUgY1tOcm93R107CmRvdWJsZSB0ZW1wMVtOcm93R11bTnJvd0ddID0gezB9Owpkb3VibGU"
-"gdGVtcDJbTnJvd0ddW05yb3dHXSA9IHswfTsKZG91YmxlIHRlbXAzW05yb3dHXVtOcm93R10gPSB7"
-"MH07CiAgICAKaW50IE54ID0gTnJvd0cgKyBOcm93QTsKaW50IE55ID0gTnJvd0cgKyBOcm93QSArI"
-"DE7CiAgICAKZG91YmxlIFgwW05yb3dHXSA9IHswLCAwfTsKZG91YmxlIE1hdFtOcm93RyArIE5yb3"
-"dBXVtOcm93RyArIE5yb3dBICsgMV07CmRvdWJsZSBzb2xbTnJvd0cgKyBOcm93QV07CiAgICAKaW5"
-"0IGFjdGl2ZV9jb25zdHJhaW50c1tOcm93QV07CmludCBudW1fYWN0X2NvbnN0OwoKdm9pZCBtdWx0"
-"aXBsaWNhck1hdHJpY2VzKGludCBYLCBpbnQgWSwgaW50IFosIGRvdWJsZSBtYXQxW1hdW1ldLCBkb"
-"3VibGUgbWF0MltZXVtaXSwgZG91YmxlIHJlc3VsdGFkb1tYXVtaXSkgewogICAgZm9yKGludCBpID"
-"0gMDsgaSA8IFg7IGkrKykgewogICAgICAgIGZvcihpbnQgaiA9IDA7IGogPCBaOyBqKyspIHsKICA"
-"gICAgICAgICAgcmVzdWx0YWRvW2ldW2pdID0gMDsKICAgICAgICAgICAgZm9yKGludCBrID0gMDsg"
-"ayA8IFk7IGsrKykgewogICAgICAgICAgICAgICAgcmVzdWx0YWRvW2ldW2pdICs9IG1hdDFbaV1ba"
-"10gKiBtYXQyW2tdW2pdOwogICAgICAgICAgICB9CiAgICAgICAgfQogICAgfQp9CgoKdm9pZCBzb2"
-"x2ZXIoZG91YmxlIE1hdFtOcm93RyArIE5yb3dBXVtOcm93RyArIE5yb3dBICsgMV0sIGludCBOeCw"
-"gaW50IE55LCBkb3VibGUgc29sW05yb3dHICsgTnJvd0FdKQp7CiAgICAvLyBUcmlhbmd1bGFyaXph"
-"dGlvbgogICAgZm9yIChpbnQgaSA9IDA7IGkgPCBOeCAtIDE7IGkrKykKICAgICAgICBmb3IgKGlud"
-"CBoID0gaSArIDE7IGggPCBOeDsgaCsrKQogICAgICAgIHsKICAgICAgICAgICAgZG91YmxlIHQgPS"
-"BNYXRbaF1baV0gLyBNYXRbaV1baV07CiAgICAgICAgICAgIGZvciAoaW50IGogPSAwOyBqIDw9IE5"
-"4OyBqKyspCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgIE1hdFtoXVtqXSA9IE1hdFtoXVtq"
-"XSAtIHQgKiBNYXRbaV1bal07CiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICAvLyBSZXNvbHV0a"
-"W9uCiAgICBmb3IgKGludCBpID0gTnggLSAxOyBpID49IDA7IGktLSkKICAgIHsKICAgICAgICBzb2"
-"xbaV0gPSBNYXRbaV1bTnhdOwogICAgICAgIGZvciAoaW50IGogPSBOeCAtIDE7IGogPiBpOyBqLS0"
-"pCiAgICAgICAgewogICAgICAgICAgICBzb2xbaV0gPSBzb2xbaV0gLSBNYXRbaV1bal0gKiBzb2xb"
-"al07CiAgICAgICAgfQogICAgICAgIHNvbFtpXSA9IHNvbFtpXSAvIE1hdFtpXVtpXTsKICAgIH0Kf"
-"Q=="
+"aW8uaD4KI2luY2x1ZGUgPHN0ZGxpYi5oPgojZGVmaW5lIHRydWUgMQojZGVmaW5lIGZhbHNlIDAKI2"
+"RlZmluZSBFUFMgMC4wMDAxIC8vVG9sZXJhbmNpYQogLy9ob3Jpem9udGUKI2RlZmluZSBOcm93QSA2"
+"IC8vIFJlc3RyaWNjaW9uZXMgZGUgdGVuc2lvbiBkZSBjbHVzdGVyLCBlYy4gKDIzKSBkZWwgcGFwZX"
+"IKI2RlZmluZSBpbnB0IDIKI2RlZmluZSBUc2MgMTAwZS02CiNkZWZpbmUgTCAyLjVlLTMKI2RlZmlu"
+"ZSBRX1ZBTCAxLjAKI2RlZmluZSBOcm93RyAyCiNkZWZpbmUgUl9WQUwgKDEuMC8xMDAwLjApIC8vIG"
+"xhbWJkYV9VJyA9IDFlLTMgKGFudGVzIDEvKDEwMDApIGRhYmEgMCBwb3IgZGl2aXNpb24gZW50ZXJh"
+"KQojZGVmaW5lIFRPTF9GQUNUIDFlLTYgLy8gVG9sZXJhbmNpYSBkZSBmYWN0aWJpbGlkYWQgZGUgbG"
+"FzIHJlc3RyaWNjaW9uZXMgW1ZdCmRvdWJsZSBYZXFbTnJvd0ddOwpkb3VibGUgYnVmXzFbTnJvd0cv"
+"Ml07ICAvLyBoaXN0b3JpYWwgc2XDsWFsIDEKZG91YmxlIGJ1Zl8yW05yb3dHLzJdOyAgLy8gaGlzdG"
+"9yaWFsIHNlw7FhbCAyCmRvdWJsZSB0aGU7IC8vIEFuZ3VsbyBwYXJhIGFkZWxhbnRhbWllbnRvIE5P"
+"IEFDVElWTyBTSSBOTyBTRSBERVNDT01FTlRBIExPIERFIEFCQUpPCgp2b2lkIGZpbGxfWGVxKHZvaW"
+"QpIHsKICAgIGludCBrOwogICAgLy8gU2hpZnRhciBlbCBidWZmZXIgKG1vdmVyIHZhbG9yZXMgYWwg"
+"cGFzYWRvKQogICAgZm9yIChrID0gTnJvd0cvMiAtIDE7IGsgPiAwOyBrLS0pIHsKICAgICAgICBidW"
+"ZfMVtrXSA9IGJ1Zl8xW2stMV07CiAgICAgICAgYnVmXzJba10gPSBidWZfMltrLTFdOwogICAgfQog"
+"ICAgLy8gRWwgdmFsb3IgYWN0dWFsIHZpZW5lIGRlIGxhIHJldHJvYWxpbWVudGFjaW9uIGVuIFhlcV"
+"swXSB5IFhlcVsxXQogICAgYnVmXzFbMF0gPSBYZXFbMF07CiAgICBidWZfMlswXSA9IFhlcVsxXTsK"
+"CiAgICAvLyBMbGVuYXIgWGVxIGNvbiBsb3MgdmFsb3JlcyBkZWwgYnVmZmVyCiAgICBmb3IgKGsgPS"
+"AwOyBrIDwgTnJvd0cvMjsgaysrKSB7CiAgICAgICAgWGVxWzIqa10gICAgID0gYnVmXzFba107ICAv"
+"LyBwYXJlczogICBhdHJhc28gayp0c2MKICAgICAgICBYZXFbMiprICsgMV0gPSBidWZfMltrXTsgIC"
+"8vIGltcGFyZXM6IGF0cmFzbyBrKnRzYwogICAgfQp9Cgpkb3VibGUgR1tOcm93R11bTnJvd0ddID0g"
+"ewogICAgMH07CgoKZG91YmxlIFRfdHJhbnNbTnJvd0ddW05yb3dHXSA9IHswfTsKCmRvdWJsZSBTW0"
+"5yb3dHXVsyXSA9IHswCgp9OwoKZG91YmxlIFJbTnJvd0ddW05yb3dHXSA9IHswfTsKCmRvdWJsZSBR"
+"W05yb3dHXVtOcm93R10gPSB7MAp9OwoKCnZvaWQgU3RhcnQodm9pZCkgewoKICAgIGRvdWJsZSB2YW"
+"wgPSAtVHNjL0w7CiAgICBpbnQgTmJsb2NrcyA9IE5yb3dHIC8gMjsKCmZvciAoaW50IGkgPSAwOyBp"
+"IDwgTnJvd0c7IGkrKyl7CiAgICAgICAgZm9yIChpbnQgaiA9IDA7IGogPCBOcm93RzsgaisrKXsKIC"
+"AgICAgICAgICAgVF90cmFuc1tpXVtqXSA9IDAuMDt9fQoKICAgIC8vIExsZW5hciBibG9xdWVzIHRy"
+"aWFuZ3VsYXIgc3VwZXJpb3I6IEFeKGotaSkqQiA9IEIgcGFyYSBqID49IGkKICAgIGZvciAoaW50IG"
+"JpID0gMDsgYmkgPCBOYmxvY2tzOyBiaSsrKSB7CiAgICAgICAgZm9yIChpbnQgYmogPSBiaTsgYmog"
+"PCBOYmxvY2tzOyBiaisrKSB7CiAgICAgICAgICAgIC8vIEJsb3F1ZSBCIGVuIHBvc2ljaW9uIChiaS"
+"wgYmopCiAgICAgICAgICAgIFRfdHJhbnNbMipiaV1bMipial0gICAgICAgICA9IHZhbDsgIC8vIEJb"
+"MF1bMF0KICAgICAgICAgICAgVF90cmFuc1syKmJpKzFdWzIqYmorMV0gICAgID0gdmFsOyAgLy8gQl"
+"sxXVsxXQogICAgICAgICAgICAvLyBCIGVzIGRpYWdvbmFsLCBlbnRvbmNlcyBCWzBdWzFdID0gQlsx"
+"XVswXSA9IDAKICAgICAgICB9CiAgICB9CgogICAgIGZvciAoaW50IGkgPSAwOyBpIDwgTnJvd0c7IG"
+"krKykKICAgICAgIHsgUltpXVtpXSA9IFJfVkFMOwogICAgICAgUVtpXVtpXSA9IFFfVkFMO30KICAg"
+"ICBmb3IgKGludCBrID0gMDsgayA8IE5yb3dHLzI7IGsrKykgewogICAgICAgIFNbMiprXVswXSAgID"
+"0gMS4wOyAgU1syKmtdWzFdICAgPSAwLjA7ICAvLyBmaWxhIHBhcjogICB7MSwgMH0KICAgICAgICBT"
+"WzIqaysxXVswXSA9IDAuMDsgIFNbMiprKzFdWzFdID0gMS4wOyAgLy8gZmlsYSBpbXBhcjogezAsID"
+"F9CiAgICB9Cn0Kdm9pZCBmaWxsX0coKSB7CiAgICBmb3IgKGludCBpID0gMDsgaSA8IE5yb3dHOyBp"
+"KyspIHsKICAgICAgICBmb3IgKGludCBqID0gMDsgaiA8IE5yb3dHOyBqKyspIHsKICAgICAgICAgIC"
+"AgZG91YmxlIHN1bSA9IDAuMDsKICAgICAgICAgICAgZm9yIChpbnQgayA9IDA7IGsgPCBOcm93Rzsg"
+"aysrKQogICAgICAgICAgICAgICAgc3VtICs9IFRfdHJhbnNbaV1ba10gKiBRW2tdW2tdICogVF90cm"
+"Fuc1tqXVtrXTsKICAgICAgICAgICAgR1tpXVtqXSA9IDIuMCAqIHN1bTsKICAgICAgICB9CiAgICAg"
+"ICAgR1tpXVtpXSArPSAyLjAgKiBSW2ldW2ldOwogICAgfQoKfQoKLy8gUmVzdHJpY2Npb25lcyBBKn"
+"UgPj0gYiAoRyp1ID49IFcgZW4gbGEgZWMuICgyMykgZGVsIHBhcGVyKS4KLy8gU29sbyBhY3R1YW4g"
+"c29icmUgbGEgYWNjaW9uIGRlIGNvbnRyb2wgZGVsIHByaW1lciBwYXNvOiB1WzBdID0gdlNpZ21hX2"
+"FscGhhLCB1WzFdID0gdlNpZ21hX2JldGEuCmRvdWJsZSBBW05yb3dBXVtOcm93R10gPSB7MH07Cgpk"
+"b3VibGUgYltOcm93QV0gPSB7MH07CgovLyBFY3MuICgyMiktKDI0KTogY2FkYSBjbHVzdGVyIGRlYm"
+"UgcXVlZGFyIGVudHJlIDAgeSBsYSBzdW1hIGRlIGxhcyB0ZW5zaW9uZXMgZGUgc3VzIGNhcGFjaXRv"
+"cmVzLgovLyB2UzAgPSB2U2lnbWFfMCAoREMgUG9ydCksIHZEMCA9IHZEZWx0YV8wICh2MCBkZSBNaX"
+"RpZ2F0aW9uKSwgdkRhIHkgdkRiID0gdkRlbHRhX2FscGhhIHkgdkRlbHRhX2JldGEgKEFDIFBvcnQp"
+"LgovLyB2Q1AgeSB2Q04gPSBzdW1hIGRlIGxhcyB0ZW5zaW9uZXMgZGUgY2FwYWNpdG9yIGRlIGxvcy"
+"BjbHVzdGVycyBQIHkgTiBkZSBsYXMgZmFzZXMgYSwgYiwgYy4Kdm9pZCBNYXRyaWNlc0NvbnN0cmFp"
+"bnRzKGRvdWJsZSB2UzAsIGRvdWJsZSB2RDAsIGRvdWJsZSB2RGEsIGRvdWJsZSB2RGIsIGRvdWJsZS"
+"B2Q1BbM10sIGRvdWJsZSB2Q05bM10pewoKICAgIGNvbnN0IGRvdWJsZSByMyA9IHNxcnQoMy4wKTsK"
+"CiAgICAvLyBFYy4gKDI0KQogICAgZG91YmxlIHYxID0gLXZTMCAtIDAuNSp2RDAgLSAwLjUqdkRhOw"
+"ogICAgZG91YmxlIHYyID0gLXZTMCAtIDAuNSp2RDAgKyAwLjI1KnZEYSAtIDAuMjUqcjMqdkRiOwog"
+"ICAgZG91YmxlIHYzID0gLXZTMCAtIDAuNSp2RDAgKyAwLjI1KnZEYSArIDAuMjUqcjMqdkRiOwogIC"
+"AgZG91YmxlIHY0ID0gLXZTMCArIDAuNSp2RDAgKyAwLjUqdkRhOwogICAgZG91YmxlIHY1ID0gLXZT"
+"MCArIDAuNSp2RDAgLSAwLjI1KnZEYSArIDAuMjUqcjMqdkRiOwogICAgZG91YmxlIHY2ID0gLXZTMC"
+"ArIDAuNSp2RDAgLSAwLjI1KnZEYSAtIDAuMjUqcjMqdkRiOwoKICAgIGZvciAoaW50IGkgPSAwOyBp"
+"IDwgTnJvd0E7IGkrKykKICAgICAgICBmb3IgKGludCBqID0gMDsgaiA8IE5yb3dHOyBqKyspCiAgIC"
+"AgICAgICAgIEFbaV1bal0gPSAwLjA7CgogICAgLy8gTWF0cml6IEcgZGUgbGEgZWMuICgyMykKICAg"
+"IEFbMF1bMF0gPSAtMS4wOyAgQVswXVsxXSA9ICAwLjA7CiAgICBBWzFdWzBdID0gIDAuNTsgIEFbMV"
+"1bMV0gPSAtMC41KnIzOwogICAgQVsyXVswXSA9ICAwLjU7ICBBWzJdWzFdID0gIDAuNSpyMzsKICAg"
+"IEFbM11bMF0gPSAgMS4wOyAgQVszXVsxXSA9ICAwLjA7CiAgICBBWzRdWzBdID0gLTAuNTsgIEFbNF"
+"1bMV0gPSAgMC41KnIzOwogICAgQVs1XVswXSA9IC0wLjU7ICBBWzVdWzFdID0gLTAuNSpyMzsKCiAg"
+"ICAvLyBWZWN0b3IgVyBkZSBsYSBlYy4gKDIzKQogICAgYlswXSA9IC1mbWluKHYxICsgdkNQWzBdLC"
+"B2NCArIHZDTlswXSk7CiAgICBiWzFdID0gLWZtaW4odjIgKyB2Q1BbMV0sIHY1ICsgdkNOWzFdKTsK"
+"ICAgIGJbMl0gPSAtZm1pbih2MyArIHZDUFsyXSwgdjYgKyB2Q05bMl0pOwogICAgYlszXSA9ICBmbW"
+"F4KHYxLCB2NCk7CiAgICBiWzRdID0gIGZtYXgodjIsIHY1KTsKICAgIGJbNV0gPSAgZm1heCh2Mywg"
+"djYpOwp9Cgpkb3VibGUgWGtbTnJvd0ddOwpkb3VibGUgY1tOcm93R107CmRvdWJsZSB0ZW1wMVtOcm"
+"93R11bTnJvd0ddID0gezB9Owpkb3VibGUgdGVtcDJbTnJvd0ddW05yb3dHXSA9IHswfTsKCmludCBl"
+"c3RhZG9fcXA7IC8vIDA6IHNpbiByZXN0cmljY2lvbmVzIGFjdGl2YXMsIDEgbyAyOiByZXN0cmljY2"
+"lvbmVzIGFjdGl2YXMsIC0xOiBzaW4gc29sdWNpb24gZmFjdGlibGUKCnZvaWQgbXVsdGlwbGljYXJN"
+"YXRyaWNlcyhpbnQgWCwgaW50IFksIGludCBaLCBkb3VibGUgbWF0MVtYXVtZXSwgZG91YmxlIG1hdD"
+"JbWV1bWl0sIGRvdWJsZSByZXN1bHRhZG9bWF1bWl0pIHsKICAgIGZvcihpbnQgaSA9IDA7IGkgPCBY"
+"OyBpKyspIHsKICAgICAgICBmb3IoaW50IGogPSAwOyBqIDwgWjsgaisrKSB7CiAgICAgICAgICAgIH"
+"Jlc3VsdGFkb1tpXVtqXSA9IDA7CiAgICAgICAgICAgIGZvcihpbnQgayA9IDA7IGsgPCBZOyBrKysp"
+"IHsKICAgICAgICAgICAgICAgIHJlc3VsdGFkb1tpXVtqXSArPSBtYXQxW2ldW2tdICogbWF0MltrXV"
+"tqXTsKICAgICAgICAgICAgfQogICAgICAgIH0KICAgIH0KfQoKLy8gUmVzdWVsdmUgTWF0KnggPSBN"
+"YXRbOl1bbl0gKG4gaW5jb2duaXRhcykgcG9yIGVsaW1pbmFjaW9uIGdhdXNzaWFuYSBjb24gcGl2b3"
+"RlbyBwYXJjaWFsLgovLyBEZXZ1ZWx2ZSBmYWxzZSBzaSBsYSBtYXRyaXogZXMgc2luZ3VsYXIuCmlu"
+"dCBzb2x2ZXIoZG91YmxlIE1hdFtOcm93RyArIDJdW05yb3dHICsgM10sIGludCBuLCBkb3VibGUgc2"
+"9sW05yb3dHICsgMl0pCnsKICAgIGZvciAoaW50IGkgPSAwOyBpIDwgbjsgaSsrKQogICAgewogICAg"
+"ICAgIGludCBwID0gaTsKICAgICAgICBmb3IgKGludCBoID0gaSArIDE7IGggPCBuOyBoKyspCiAgIC"
+"AgICAgICAgIGlmIChmYWJzKE1hdFtoXVtpXSkgPiBmYWJzKE1hdFtwXVtpXSkpIHAgPSBoOwogICAg"
+"ICAgIGlmIChmYWJzKE1hdFtwXVtpXSkgPCAxZS0xNCkgcmV0dXJuIGZhbHNlOwogICAgICAgIGlmIC"
+"hwICE9IGkpCiAgICAgICAgICAgIGZvciAoaW50IGogPSAwOyBqIDw9IG47IGorKykKICAgICAgICAg"
+"ICAgewogICAgICAgICAgICAgICAgZG91YmxlIHQgPSBNYXRbaV1bal07IE1hdFtpXVtqXSA9IE1hdF"
+"twXVtqXTsgTWF0W3BdW2pdID0gdDsKICAgICAgICAgICAgfQogICAgICAgIGZvciAoaW50IGggPSBp"
+"ICsgMTsgaCA8IG47IGgrKykKICAgICAgICB7CiAgICAgICAgICAgIGRvdWJsZSB0ID0gTWF0W2hdW2"
+"ldIC8gTWF0W2ldW2ldOwogICAgICAgICAgICBmb3IgKGludCBqID0gaTsgaiA8PSBuOyBqKyspCiAg"
+"ICAgICAgICAgICAgICBNYXRbaF1bal0gPSBNYXRbaF1bal0gLSB0ICogTWF0W2ldW2pdOwogICAgIC"
+"AgIH0KICAgIH0KICAgIGZvciAoaW50IGkgPSBuIC0gMTsgaSA+PSAwOyBpLS0pCiAgICB7CiAgICAg"
+"ICAgc29sW2ldID0gTWF0W2ldW25dOwogICAgICAgIGZvciAoaW50IGogPSBpICsgMTsgaiA8IG47IG"
+"orKykKICAgICAgICAgICAgc29sW2ldID0gc29sW2ldIC0gTWF0W2ldW2pdICogc29sW2pdOwogICAg"
+"ICAgIHNvbFtpXSA9IHNvbFtpXSAvIE1hdFtpXVtpXTsKICAgIH0KICAgIHJldHVybiB0cnVlOwp9Cg"
+"ovLyBTb2x1Y2lvbiBleGFjdGEgZGVsIFFQIG1pbiAwLjUqdScqRyp1ICsgYycqdSAgcy5hLiAgQSp1"
+"ID49IGIgIChlYy4gKDIxKSBjb24gbGFzIHJlc3RyaWNjaW9uZXMgZGUgbGEgZWMuICgyMykpLgovLy"
+"BMYXMgcmVzdHJpY2Npb25lcyBzb2xvIGRlcGVuZGVuIGRlIDIgdmFyaWFibGVzLCBhc2kgcXVlIGVs"
+"IG9wdGltbyB0aWVuZSBhIGxvIHN1bW8gMiByZXN0cmljY2lvbmVzIGFjdGl2YXM6Ci8vIHNlIHJlc3"
+"VlbHZlIGVsIHNpc3RlbWEgS0tUIGRlIGNhZGEgY29uanVudG8gYWN0aXZvIHBvc2libGUgKG5pbmd1"
+"bmEsIHVuYSBvIGRvcyByZXN0cmljY2lvbmVzKSB5IHNlIGVsaWdlCi8vIGVsIGRlIG1lbm9yIGNvc3"
+"RvIGVudHJlIGxvcyBmYWN0aWJsZXMuIENvbW8gZWwgcHJvYmxlbWEgZXMgZXN0cmljdGFtZW50ZSBj"
+"b252ZXhvLCBlc2UgZXMgZWwgb3B0aW1vIGdsb2JhbC4KLy8gU2kgbmluZ3VuIGNhbmRpZGF0byBlcy"
+"BmYWN0aWJsZSwgc2UgdXNhIGVsIGRlIG1lbm9yIHZpb2xhY2lvbiB0b3RhbC4KaW50IGhheV9jYW5k"
+"aWRhdG8sIG1lam9yX2ZhY3RpYmxlOwpkb3VibGUgbWVqb3JfY29zdG8sIG1lam9yX3Zpb2xhY2lvbj"
+"sKCnZvaWQgZXZhbHVhcl9jYW5kaWRhdG8oaW50IG0sIGludCBXWzJdLCBkb3VibGUgdV9vcHRbTnJv"
+"d0ddKQp7CiAgICBkb3VibGUgTWF0W05yb3dHICsgMl1bTnJvd0cgKyAzXTsKICAgIGRvdWJsZSBzb2"
+"xbTnJvd0cgKyAyXTsKICAgIGludCBuID0gTnJvd0cgKyBtOwoKICAgIC8vIFtHICAtQV9XJ10gW3Ug"
+"ICAgIF0gICBbLWMgXQogICAgLy8gW0FfVyAgMCAgXSBbbGFtYmRhXSA9IFtiX1ddCiAgICBmb3IgKG"
+"ludCByID0gMDsgciA8IG47IHIrKykKICAgICAgICBmb3IgKGludCBzID0gMDsgcyA8PSBuOyBzKysp"
+"CiAgICAgICAgICAgIE1hdFtyXVtzXSA9IDAuMDsKICAgIGZvciAoaW50IHIgPSAwOyByIDwgTnJvd0"
+"c7IHIrKykKICAgIHsKICAgICAgICBmb3IgKGludCBzID0gMDsgcyA8IE5yb3dHOyBzKyspIE1hdFty"
+"XVtzXSA9IEdbcl1bc107CiAgICAgICAgZm9yIChpbnQgYSA9IDA7IGEgPCBtOyBhKyspIE1hdFtyXV"
+"tOcm93RyArIGFdID0gLUFbV1thXV1bcl07CiAgICAgICAgTWF0W3JdW25dID0gLWNbcl07CiAgICB9"
+"CiAgICBmb3IgKGludCBhID0gMDsgYSA8IG07IGErKykKICAgIHsKICAgICAgICBmb3IgKGludCBzID"
+"0gMDsgcyA8IE5yb3dHOyBzKyspIE1hdFtOcm93RyArIGFdW3NdID0gQVtXW2FdXVtzXTsKICAgICAg"
+"ICBNYXRbTnJvd0cgKyBhXVtuXSA9IGJbV1thXV07CiAgICB9CiAgICBpZiAoIXNvbHZlcihNYXQsIG"
+"4sIHNvbCkpIHJldHVybjsgLy8gcmVzdHJpY2Npb25lcyBwYXJhbGVsYXM6IG5vIGZvcm1hbiB2ZXJ0"
+"aWNlCgogICAgZG91YmxlIHZpb2xhY2lvbiA9IDAuMDsKICAgIGZvciAoaW50IHIgPSAwOyByIDwgTn"
+"Jvd0E7IHIrKykKICAgIHsKICAgICAgICBkb3VibGUgYXUgPSAwLjA7CiAgICAgICAgZm9yIChpbnQg"
+"cyA9IDA7IHMgPCBOcm93RzsgcysrKSBhdSArPSBBW3JdW3NdICogc29sW3NdOwogICAgICAgIGlmIC"
+"hhdSA8IGJbcl0gLSBUT0xfRkFDVCkgdmlvbGFjaW9uICs9IGJbcl0gLSBhdTsKICAgIH0KICAgIGRv"
+"dWJsZSBjb3N0byA9IDAuMDsKICAgIGZvciAoaW50IHIgPSAwOyByIDwgTnJvd0c7IHIrKykKICAgIH"
+"sKICAgICAgICBkb3VibGUgZ3UgPSAwLjA7CiAgICAgICAgZm9yIChpbnQgcyA9IDA7IHMgPCBOcm93"
+"RzsgcysrKSBndSArPSBHW3JdW3NdICogc29sW3NdOwogICAgICAgIGNvc3RvICs9IHNvbFtyXSAqIC"
+"gwLjUgKiBndSArIGNbcl0pOwogICAgfQogICAgaW50IGZhY3RpYmxlID0gKHZpb2xhY2lvbiA9PSAw"
+"LjApOwoKICAgIGludCBtZWpvcjsKICAgIGlmICghaGF5X2NhbmRpZGF0bykgbWVqb3IgPSB0cnVlOw"
+"ogICAgZWxzZSBpZiAoZmFjdGlibGUgIT0gbWVqb3JfZmFjdGlibGUpIG1lam9yID0gZmFjdGlibGU7"
+"CiAgICBlbHNlIGlmIChmYWN0aWJsZSkgbWVqb3IgPSAoY29zdG8gPCBtZWpvcl9jb3N0byk7CiAgIC"
+"BlbHNlIG1lam9yID0gKHZpb2xhY2lvbiA8IG1lam9yX3Zpb2xhY2lvbikgfHwgKHZpb2xhY2lvbiA9"
+"PSBtZWpvcl92aW9sYWNpb24gJiYgY29zdG8gPCBtZWpvcl9jb3N0byk7CgogICAgaWYgKG1lam9yKQ"
+"ogICAgewogICAgICAgIGZvciAoaW50IHMgPSAwOyBzIDwgTnJvd0c7IHMrKykgdV9vcHRbc10gPSBz"
+"b2xbc107CiAgICAgICAgaGF5X2NhbmRpZGF0byA9IHRydWU7CiAgICAgICAgbWVqb3JfZmFjdGlibG"
+"UgPSBmYWN0aWJsZTsKICAgICAgICBtZWpvcl9jb3N0byA9IGNvc3RvOwogICAgICAgIG1lam9yX3Zp"
+"b2xhY2lvbiA9IHZpb2xhY2lvbjsKICAgICAgICBlc3RhZG9fcXAgPSBmYWN0aWJsZSA/IG0gOiAtMT"
+"sKICAgIH0KfQoKdm9pZCByZXNvbHZlcl9xcChkb3VibGUgdV9vcHRbTnJvd0ddKQp7CiAgICBpbnQg"
+"V1syXSA9IHswLCAwfTsKICAgIGhheV9jYW5kaWRhdG8gPSBmYWxzZTsKICAgIG1lam9yX2ZhY3RpYm"
+"xlID0gZmFsc2U7CiAgICBlc3RhZG9fcXAgPSAtMTsKICAgIGZvciAoaW50IHMgPSAwOyBzIDwgTnJv"
+"d0c7IHMrKykgdV9vcHRbc10gPSAwLjA7CgogICAgZXZhbHVhcl9jYW5kaWRhdG8oMCwgVywgdV9vcH"
+"QpOyAgICAgICAgICAgICAgICAgLy8gc2luIHJlc3RyaWNjaW9uZXMgYWN0aXZhcwogICAgZm9yIChp"
+"bnQgaSA9IDA7IGkgPCBOcm93QTsgaSsrKQogICAgewogICAgICAgIFdbMF0gPSBpOwogICAgICAgIG"
+"V2YWx1YXJfY2FuZGlkYXRvKDEsIFcsIHVfb3B0KTsgICAgICAgICAgICAgLy8gdW5hIHJlc3RyaWNj"
+"aW9uIGFjdGl2YQogICAgICAgIGZvciAoaW50IGogPSBpICsgMTsgaiA8IE5yb3dBOyBqKyspCiAgIC"
+"AgICAgewogICAgICAgICAgICBXWzFdID0gajsKICAgICAgICAgICAgZXZhbHVhcl9jYW5kaWRhdG8o"
+"MiwgVywgdV9vcHQpOyAgICAgICAgIC8vIGRvcyByZXN0cmljY2lvbmVzIGFjdGl2YXMgKHZlcnRpY2"
+"UpCiAgICAgICAgfQogICAgfQp9Cg=="
                 Show          off
               }
               Parameter {
@@ -8728,244 +8794,65 @@ Plecs {
               }
               Parameter {
                 Variable      "OutputFcn"
-                Value         "//Xk son estados actuales    \n"
-"\t \n"
+                Value         "//Xk son estados actuales\n"
+"\n"
 "    Xk[0] = InputSignal(0, 0);\n"
 "    Xk[1] = InputSignal(0, 1);\n"
 "\n"
 "//Xeq  son referencias\n"
-"\t \n"
+"\n"
 "\t Xeq[0] = InputSignal(0, 2);\n"
 "    Xeq[1] = InputSignal(0, 3);\n"
 "    the = InputSignal(1, 0);\n"
 "    fill_Xeq( );\n"
-"    \n"
+"\n"
 "    OutputSignal(0, NrowG+1) = Xeq[0];\n"
 "\n"
 "\tStart();\n"
 "\tfill_G( );\n"
-"\tMatricesConstraints();\n"
-"    \n"
-"    /*for (int i = 0; i < NrowG; i++)\n"
-"    {\n"
-"        double cont = 0;\n"
-"        for (int j = 0; j < NrowG; j++)\n"
-"        {\n"
-"            cont += 2 * Xk[j] * F[j][i] + Xeq[j] * J[j][i]; //Incluir el dos "
-"en la matriz\n"
-"        }\n"
-"        c[i] = cont;\n"
-"    }*/\n"
+"\n"
+"//Restricciones de tension de cluster, ecs. (22)-(24)\n"
+"//Entrada 1: [delta_the, V0Sigma, V0Delta, ValphaDelta, VbetaDelta,\n"
+"//            Vcap1ap, Vcap2ap, Vcap3ap, Vcap1bp, ..., Vcap3cp, Vcap1an, ..."
+", Vcap3cn]\n"
+"\tdouble vCP[3], vCN[3];\n"
+"\tfor (int x = 0; x < 3; x++){\n"
+"\t\tvCP[x] = InputSignal(1, 5 + 3*x) + InputSignal(1, 6 + 3*x) + InputSignal"
+"(1, 7 + 3*x);\n"
+"\t\tvCN[x] = InputSignal(1, 14 + 3*x) + InputSignal(1, 15 + 3*x) + InputSign"
+"al(1, 16 + 3*x);\n"
+"\t}\n"
+"\tMatricesConstraints(InputSignal(1, 1), InputSignal(1, 2), InputSignal(1, 3"
+"), InputSignal(1, 4), vCP, vCN);\n"
+"\n"
 "\t //Calcular C\n"
-"\t \n"
+"\n"
 "\t //temp1 = T'Q\n"
-"\t multiplicarMatrices(NrowG, NrowG, NrowG, T_trans, Q, temp1); \n"
-"\t \n"
+"\t multiplicarMatrices(NrowG, NrowG, NrowG, T_trans, Q, temp1);\n"
+"\n"
 "\t //temp2 = 2(Sxk - xeq)\n"
 "\t for(int i = 0; i < NrowG; i++){\n"
-"        //temp2[i][0] = 2*(S[i][i % 2]*Xk[i % 2] - Xeq[i]);\n"
 "        temp2[i][0] = 2*(Xk[i % 2] - Xeq[i]);\n"
 "    }\n"
 "    // c = temp1*temp2\n"
-"\t  \n"
+"\n"
 "    for(int i = 0; i < NrowG; i++){\n"
 "        c[i] = 0;\n"
 "        for(int k = 0; k < NrowG; k++){\n"
 "            c[i] += temp1[i][k] * temp2[k][0];\n"
 "        }\n"
 "    }\n"
-" \n"
-"\t\n"
-"\t\tX0[0] = 0;\t\n"
-"\t\tX0[1] = 0;\t\n"
-"    \t \n"
-"\t //Definiendo W0\n"
-"    num_act_const = 0; //Cuenta la cantidad de restricciones activas\n"
 "\n"
-"\t \n"
-"\t for (int k = 0; k < 25; k++) //Iteraciones de la optimizacion\n"
-"    {\n"
-"\n"
-"        OutputSignal(0, NrowG) = k+1;\n"
-"\n"
-"        //Actualiza las dimenciones de la matriz de acuerdo con las restricci"
-"ones activas\n"
-"        Nx = NrowG + num_act_const;\n"
-"        Ny = NrowG + num_act_const  + 1;\n"
-"        \n"
-"        //Completa la parte superior de la matriz\n"
-"        for (int i = 0; i < NrowG; i++) \n"
-"        {\n"
-"            //-gk = -G*Xk-c     Calcula gk para cada iteracion\n"
-"            double cont = 0;\n"
-"            for (int j = 0; j < NrowG; j++)\n"
-"            {\n"
-"                cont -= G[i][j] * X0[j];\n"
-"                Mat[i][j] = G[i][j]; //Dado que el ciclo recorre G se aprovec"
-"ha para Copiar G en Mat en cada iteracion\n"
-"            }\n"
-"            //Copia la matriz -AT actualizada\n"
-"            for (int j = NrowG; j < Ny - 1; j++) \n"
-"            {\n"
-"                Mat[i][j] = -A[active_constraints[j - NrowG]][i];\n"
-"            }\n"
-"            Mat[i][Ny - 1] = cont - c[i]; // Copia en valor de -gk en la matr"
-"iz\n"
-"        }\n"
-"        \n"
-"        for (int i = NrowG; i < Nx; i++) //Copia A\n"
-"        {\n"
-"            //Copia la matriz A actualizada\n"
-"            for (int j = 0; j < NrowG; j++)\n"
-"            {\n"
-"                Mat[i][j] = A[active_constraints[i - NrowG]][j];\n"
-"            }\n"
-"            \n"
-"            //Completa los ceros de la matriz\n"
-"            for (int j = NrowG; j < Ny; j++)\n"
-"            {\n"
-"                Mat[i][j] = 0;\n"
-"            }\n"
-"        }\n"
-"        /*printf(\"Matrix: \\n\");\n"
-"        for (int i = 0; i < Nx; i++)\n"
-"        {\n"
-"            for (int j = 0; j < Ny; j++)\n"
-"            {\n"
-"                printf(\"%f   \", Mat[i][j]);\n"
-"            }\n"
-"            printf(\"\\n\");\n"
-"        }*/\n"
-"        \n"
-"        solver (Mat, Nx, Ny, sol); // Resuelve el sistema de ecuaciones encon"
-"trando Pk y Lambda\n"
-"        \n"
-"        //Determina si pk = 0\n"
-"        int pk = true;\n"
-"        for (int i = 0; i < NrowG; i++)\n"
-"        {\n"
-"            if(fabs(sol[i]) > EPS)\n"
-"            {\n"
-"                pk = false;\n"
-"                break;\n"
-"            }\n"
-"        }\n"
-"        if(pk) //Si pk = 0\n"
-"        {\n"
-"            //Determina si todos los Lambda son >= 0\n"
-"            int Lambda = true; //Verdadero si Lambda es cero\n"
-"            double Lambda_min = -EPS; //Guarda el valor minimo de lambda\n"
-"            int index_Lambda_min; //Guarda el indice del menor valor de Lambd"
-"a\n"
-"            for (int i = NrowG; i < Nx; i++)\n"
-"            {\n"
-"                if(sol[i] < Lambda_min)\n"
-"                {\n"
-"                    Lambda = false;\n"
-"                    index_Lambda_min = active_constraints[i - NrowG];\n"
-"                    Lambda_min = sol[i];\n"
-"                }\n"
-"            }\n"
-"            if(Lambda) //Si todos los Lambda son >= 0 termina el algoritmo\n"
-"            { \n"
-"                //printf(\"SOLUCION\\n\");\n"
-"                for (int i = 0; i < NrowG; i++)\n"
-"                {\n"
-"\t\t\t\t\t\t\t//Outputs\n"
-"\t\t\t\t\t\t\tOutputSignal(0, i) = X0[i];\n"
-"\t\t\t\t\t\t\t\n"
-"                }\n"
-"                goto stop_label; //Sale el ciclo y termina las iteraciones\n"
-"            }\n"
-"            else \n"
-"            {\n"
-"                //Elimina la restriccion activa con el minimo lambda\n"
-"                num_act_const--;\n"
-"                for(int i = 0; i < num_act_const; i++) \n"
-"                {\n"
-"                    if(active_constraints[i] == index_Lambda_min) \n"
-"                    {\n"
-"                        while(i < num_act_const)\n"
-"                        {\n"
-"                            active_constraints[i] = active_constraints[i+1];"
-"\n"
-"                            i++;\n"
-"                        }\n"
-"                        break; //Se utiliza para salir sin evaluar el for en "
-"la ultima iteracion\n"
-"                    }\n"
-"                }\n"
-"            }\n"
-"        }\n"
-"        else \n"
-"        {\n"
-"            //Calcula el valor de alpha_k\n"
-"            double alpha_k = 1;\n"
-"            //Recorre la matriz de restricciones\n"
-"\t\t\t\tfor (int i = 0; i < NrowA; i++)\n"
-"            {\n"
-"                double num = 0;\n"
-"                double den = 0;\n"
-"                double aux;\n"
-"\t\t\t\t    for (int h = 0; h < num_act_const; h++) //Verifica que no esa una"
-" restriccion activa\n"
-"                {\n"
-"                \t   if(i == active_constraints[h])\n"
-"\t\t\t\t\t\t\t{\n"
-"\t\t\t\t\t\t\t\tgoto stop_loop;\n"
-"                  \t}\n"
-"\t\t\t\t\t }\n"
-"                for (int j = 0; j < NrowG; j++)\n"
-"                {\n"
-"                     num += A[i][j] * X0[j];\n"
-"                     den += A[i][j] * sol[j];\n"
-"                }\n"
-"                if(den < -EPS) //Calcula el valor de alpha si AT*pk < 0\n"
-"                {\n"
-"                    \taux = (b[i] - num)/den;\n"
-"                    \tif(alpha_k > aux ) alpha_k = aux;\n"
-"                }\n"
-"\t\t\t\t\t stop_loop:\n"
-"\t\t\t\t\t continue;\n"
-"            }\n"
-"            //Actualza el valor de Xk+1 = Xk +alpha*pk\n"
-"            for (int i = 0; i < NrowG; i++)\n"
-"            {\n"
-"                X0[i] = X0[i] + alpha_k*sol[i];\n"
-"            }\n"
-"            \n"
-"            //Definiendo Wk+1\n"
-"\t\t\t\tfor (int i = 0; i < NrowA; i++)\n"
-"            {\n"
-"\t\t\t\t    for (int h = 0; h < num_act_const; h++) //Verifica que no esa una"
-" restriccion activa\n"
-"                {\n"
-"                \t   if(i == active_constraints[h])\n"
-"\t\t\t\t\t\t\t{\n"
-"\t\t\t\t\t\t\t\tgoto stop_loop_wk1;\n"
-"                  \t}\n"
-"\t\t\t\t\t }\n"
-"                double cont = 0;\n"
-"                for (int j = 0; j < NrowG; j++)\n"
-"                {\n"
-"                    cont += A[i][j] * X0[j];\n"
-"                }\n"
-"                if (fabs(cont - b[i]) < EPS)\n"
-"                {\n"
-"                    active_constraints[num_act_const] = i;\n"
-"                    num_act_const++;\n"
-"                    break; //Cuando se agrega la restriccion termina el ciclo"
-"\t\n"
-"                }\n"
-"\t\t\t\t\t stop_loop_wk1:\n"
-"\t\t\t\t\t continue;\n"
-"            }\n"
-"        }\n"
-"    }\n"
-"    stop_label:\n"
-"\n"
-"\n"
-"\n"
+"\t//Optimizacion con restricciones (solucion exacta del QP)\n"
+"\tdouble u_opt[NrowG];\n"
+"\tresolver_qp(u_opt);\n"
+"\tfor (int i = 0; i < NrowG; i++)\n"
+"\t{\n"
+"\t\tOutputSignal(0, i) = u_opt[i];\n"
+"\t}\n"
+"\t//0: sin restricciones activas, 1 o 2: restricciones activas, -1: sin solu"
+"cion factible\n"
+"\tOutputSignal(0, NrowG) = estado_qp;\n"
                 Show          off
               }
               Parameter {
@@ -9352,7 +9239,7 @@ Plecs {
               Type          From
               Name          "From13"
               Show          off
-              Position      [85, 220]
+              Position      [170, 300]
               Direction     right
               Flipped       off
               LabelPosition south
@@ -9522,8 +9409,7 @@ Plecs {
               Type          Signal
               SrcComponent  "From13"
               SrcTerminal   1
-              Points        [275, 220; 275, 105]
-              DstComponent  "Optimization"
+              DstComponent  "Mux20"
               DstTerminal   2
             }
             Connection {
@@ -9578,6 +9464,953 @@ Plecs {
                 DstComponent  "Mux2"
                 DstTerminal   2
               }
+            }
+            Component {
+              Type          SignalMux
+              Name          "Mux20"
+              Show          off
+              Position      [260, 520]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Frame         [-2, -230; 7, 230]
+              Parameter {
+                Variable      "Width"
+                Value         "23"
+                Show          off
+              }
+            }
+            Component {
+              Type          From
+              Name          "From14"
+              Show          off
+              Position      [170, 320]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Tag"
+                Value         base64 "VjDOow=="
+                Show          off
+              }
+              Parameter {
+                Variable      "Visibility"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "NoMatchingCounterpartAction"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "CustomMessage"
+                Value         ""
+                Show          off
+                Evaluate      on
+              }
+              Parameter {
+                Variable      "HighlightLevel"
+                Value         "0"
+                Show          off
+              }
+            }
+            Component {
+              Type          From
+              Name          "From15"
+              Show          off
+              Position      [170, 340]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Tag"
+                Value         base64 "VjDOlA=="
+                Show          off
+              }
+              Parameter {
+                Variable      "Visibility"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "NoMatchingCounterpartAction"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "CustomMessage"
+                Value         ""
+                Show          off
+                Evaluate      on
+              }
+              Parameter {
+                Variable      "HighlightLevel"
+                Value         "0"
+                Show          off
+              }
+            }
+            Component {
+              Type          From
+              Name          "From16"
+              Show          off
+              Position      [170, 360]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Tag"
+                Value         base64 "Vs6xzpQ="
+                Show          off
+              }
+              Parameter {
+                Variable      "Visibility"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "NoMatchingCounterpartAction"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "CustomMessage"
+                Value         ""
+                Show          off
+                Evaluate      on
+              }
+              Parameter {
+                Variable      "HighlightLevel"
+                Value         "0"
+                Show          off
+              }
+            }
+            Component {
+              Type          From
+              Name          "From17"
+              Show          off
+              Position      [170, 380]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Tag"
+                Value         base64 "Vs6yzpQ="
+                Show          off
+              }
+              Parameter {
+                Variable      "Visibility"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "NoMatchingCounterpartAction"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "CustomMessage"
+                Value         ""
+                Show          off
+                Evaluate      on
+              }
+              Parameter {
+                Variable      "HighlightLevel"
+                Value         "0"
+                Show          off
+              }
+            }
+            Component {
+              Type          From
+              Name          "From18"
+              Show          off
+              Position      [170, 400]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Tag"
+                Value         "Vcap1ap"
+                Show          off
+              }
+              Parameter {
+                Variable      "Visibility"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "NoMatchingCounterpartAction"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "CustomMessage"
+                Value         ""
+                Show          off
+                Evaluate      on
+              }
+              Parameter {
+                Variable      "HighlightLevel"
+                Value         "0"
+                Show          off
+              }
+            }
+            Component {
+              Type          From
+              Name          "From19"
+              Show          off
+              Position      [170, 420]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Tag"
+                Value         "Vcap2ap"
+                Show          off
+              }
+              Parameter {
+                Variable      "Visibility"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "NoMatchingCounterpartAction"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "CustomMessage"
+                Value         ""
+                Show          off
+                Evaluate      on
+              }
+              Parameter {
+                Variable      "HighlightLevel"
+                Value         "0"
+                Show          off
+              }
+            }
+            Component {
+              Type          From
+              Name          "From20"
+              Show          off
+              Position      [170, 440]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Tag"
+                Value         "Vcap3ap"
+                Show          off
+              }
+              Parameter {
+                Variable      "Visibility"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "NoMatchingCounterpartAction"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "CustomMessage"
+                Value         ""
+                Show          off
+                Evaluate      on
+              }
+              Parameter {
+                Variable      "HighlightLevel"
+                Value         "0"
+                Show          off
+              }
+            }
+            Component {
+              Type          From
+              Name          "From21"
+              Show          off
+              Position      [170, 460]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Tag"
+                Value         "Vcap1bp"
+                Show          off
+              }
+              Parameter {
+                Variable      "Visibility"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "NoMatchingCounterpartAction"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "CustomMessage"
+                Value         ""
+                Show          off
+                Evaluate      on
+              }
+              Parameter {
+                Variable      "HighlightLevel"
+                Value         "0"
+                Show          off
+              }
+            }
+            Component {
+              Type          From
+              Name          "From22"
+              Show          off
+              Position      [170, 480]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Tag"
+                Value         "Vcap2bp"
+                Show          off
+              }
+              Parameter {
+                Variable      "Visibility"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "NoMatchingCounterpartAction"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "CustomMessage"
+                Value         ""
+                Show          off
+                Evaluate      on
+              }
+              Parameter {
+                Variable      "HighlightLevel"
+                Value         "0"
+                Show          off
+              }
+            }
+            Component {
+              Type          From
+              Name          "From23"
+              Show          off
+              Position      [170, 500]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Tag"
+                Value         "Vcap3bp"
+                Show          off
+              }
+              Parameter {
+                Variable      "Visibility"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "NoMatchingCounterpartAction"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "CustomMessage"
+                Value         ""
+                Show          off
+                Evaluate      on
+              }
+              Parameter {
+                Variable      "HighlightLevel"
+                Value         "0"
+                Show          off
+              }
+            }
+            Component {
+              Type          From
+              Name          "From24"
+              Show          off
+              Position      [170, 520]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Tag"
+                Value         "Vcap1cp"
+                Show          off
+              }
+              Parameter {
+                Variable      "Visibility"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "NoMatchingCounterpartAction"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "CustomMessage"
+                Value         ""
+                Show          off
+                Evaluate      on
+              }
+              Parameter {
+                Variable      "HighlightLevel"
+                Value         "0"
+                Show          off
+              }
+            }
+            Component {
+              Type          From
+              Name          "From25"
+              Show          off
+              Position      [170, 540]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Tag"
+                Value         "Vcap2cp"
+                Show          off
+              }
+              Parameter {
+                Variable      "Visibility"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "NoMatchingCounterpartAction"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "CustomMessage"
+                Value         ""
+                Show          off
+                Evaluate      on
+              }
+              Parameter {
+                Variable      "HighlightLevel"
+                Value         "0"
+                Show          off
+              }
+            }
+            Component {
+              Type          From
+              Name          "From26"
+              Show          off
+              Position      [170, 560]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Tag"
+                Value         "Vcap3cp"
+                Show          off
+              }
+              Parameter {
+                Variable      "Visibility"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "NoMatchingCounterpartAction"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "CustomMessage"
+                Value         ""
+                Show          off
+                Evaluate      on
+              }
+              Parameter {
+                Variable      "HighlightLevel"
+                Value         "0"
+                Show          off
+              }
+            }
+            Component {
+              Type          From
+              Name          "From27"
+              Show          off
+              Position      [170, 580]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Tag"
+                Value         "Vcap1an"
+                Show          off
+              }
+              Parameter {
+                Variable      "Visibility"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "NoMatchingCounterpartAction"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "CustomMessage"
+                Value         ""
+                Show          off
+                Evaluate      on
+              }
+              Parameter {
+                Variable      "HighlightLevel"
+                Value         "0"
+                Show          off
+              }
+            }
+            Component {
+              Type          From
+              Name          "From28"
+              Show          off
+              Position      [170, 600]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Tag"
+                Value         "Vcap2an"
+                Show          off
+              }
+              Parameter {
+                Variable      "Visibility"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "NoMatchingCounterpartAction"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "CustomMessage"
+                Value         ""
+                Show          off
+                Evaluate      on
+              }
+              Parameter {
+                Variable      "HighlightLevel"
+                Value         "0"
+                Show          off
+              }
+            }
+            Component {
+              Type          From
+              Name          "From29"
+              Show          off
+              Position      [170, 620]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Tag"
+                Value         "Vcap3an"
+                Show          off
+              }
+              Parameter {
+                Variable      "Visibility"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "NoMatchingCounterpartAction"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "CustomMessage"
+                Value         ""
+                Show          off
+                Evaluate      on
+              }
+              Parameter {
+                Variable      "HighlightLevel"
+                Value         "0"
+                Show          off
+              }
+            }
+            Component {
+              Type          From
+              Name          "From30"
+              Show          off
+              Position      [170, 640]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Tag"
+                Value         "Vcap1bn"
+                Show          off
+              }
+              Parameter {
+                Variable      "Visibility"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "NoMatchingCounterpartAction"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "CustomMessage"
+                Value         ""
+                Show          off
+                Evaluate      on
+              }
+              Parameter {
+                Variable      "HighlightLevel"
+                Value         "0"
+                Show          off
+              }
+            }
+            Component {
+              Type          From
+              Name          "From31"
+              Show          off
+              Position      [170, 660]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Tag"
+                Value         "Vcap2bn"
+                Show          off
+              }
+              Parameter {
+                Variable      "Visibility"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "NoMatchingCounterpartAction"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "CustomMessage"
+                Value         ""
+                Show          off
+                Evaluate      on
+              }
+              Parameter {
+                Variable      "HighlightLevel"
+                Value         "0"
+                Show          off
+              }
+            }
+            Component {
+              Type          From
+              Name          "From32"
+              Show          off
+              Position      [170, 680]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Tag"
+                Value         "Vcap3bn"
+                Show          off
+              }
+              Parameter {
+                Variable      "Visibility"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "NoMatchingCounterpartAction"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "CustomMessage"
+                Value         ""
+                Show          off
+                Evaluate      on
+              }
+              Parameter {
+                Variable      "HighlightLevel"
+                Value         "0"
+                Show          off
+              }
+            }
+            Component {
+              Type          From
+              Name          "From33"
+              Show          off
+              Position      [170, 700]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Tag"
+                Value         "Vcap1cn"
+                Show          off
+              }
+              Parameter {
+                Variable      "Visibility"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "NoMatchingCounterpartAction"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "CustomMessage"
+                Value         ""
+                Show          off
+                Evaluate      on
+              }
+              Parameter {
+                Variable      "HighlightLevel"
+                Value         "0"
+                Show          off
+              }
+            }
+            Component {
+              Type          From
+              Name          "From34"
+              Show          off
+              Position      [170, 720]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Tag"
+                Value         "Vcap2cn"
+                Show          off
+              }
+              Parameter {
+                Variable      "Visibility"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "NoMatchingCounterpartAction"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "CustomMessage"
+                Value         ""
+                Show          off
+                Evaluate      on
+              }
+              Parameter {
+                Variable      "HighlightLevel"
+                Value         "0"
+                Show          off
+              }
+            }
+            Component {
+              Type          From
+              Name          "From35"
+              Show          off
+              Position      [170, 740]
+              Direction     right
+              Flipped       off
+              LabelPosition south
+              Parameter {
+                Variable      "Tag"
+                Value         "Vcap3cn"
+                Show          off
+              }
+              Parameter {
+                Variable      "Visibility"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "NoMatchingCounterpartAction"
+                Value         "1"
+                Show          off
+              }
+              Parameter {
+                Variable      "CustomMessage"
+                Value         ""
+                Show          off
+                Evaluate      on
+              }
+              Parameter {
+                Variable      "HighlightLevel"
+                Value         "0"
+                Show          off
+              }
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "From14"
+              SrcTerminal   1
+              DstComponent  "Mux20"
+              DstTerminal   3
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "From15"
+              SrcTerminal   1
+              DstComponent  "Mux20"
+              DstTerminal   4
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "From16"
+              SrcTerminal   1
+              DstComponent  "Mux20"
+              DstTerminal   5
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "From17"
+              SrcTerminal   1
+              DstComponent  "Mux20"
+              DstTerminal   6
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "From18"
+              SrcTerminal   1
+              DstComponent  "Mux20"
+              DstTerminal   7
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "From19"
+              SrcTerminal   1
+              DstComponent  "Mux20"
+              DstTerminal   8
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "From20"
+              SrcTerminal   1
+              DstComponent  "Mux20"
+              DstTerminal   9
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "From21"
+              SrcTerminal   1
+              DstComponent  "Mux20"
+              DstTerminal   10
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "From22"
+              SrcTerminal   1
+              DstComponent  "Mux20"
+              DstTerminal   11
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "From23"
+              SrcTerminal   1
+              DstComponent  "Mux20"
+              DstTerminal   12
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "From24"
+              SrcTerminal   1
+              DstComponent  "Mux20"
+              DstTerminal   13
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "From25"
+              SrcTerminal   1
+              DstComponent  "Mux20"
+              DstTerminal   14
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "From26"
+              SrcTerminal   1
+              DstComponent  "Mux20"
+              DstTerminal   15
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "From27"
+              SrcTerminal   1
+              DstComponent  "Mux20"
+              DstTerminal   16
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "From28"
+              SrcTerminal   1
+              DstComponent  "Mux20"
+              DstTerminal   17
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "From29"
+              SrcTerminal   1
+              DstComponent  "Mux20"
+              DstTerminal   18
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "From30"
+              SrcTerminal   1
+              DstComponent  "Mux20"
+              DstTerminal   19
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "From31"
+              SrcTerminal   1
+              DstComponent  "Mux20"
+              DstTerminal   20
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "From32"
+              SrcTerminal   1
+              DstComponent  "Mux20"
+              DstTerminal   21
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "From33"
+              SrcTerminal   1
+              DstComponent  "Mux20"
+              DstTerminal   22
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "From34"
+              SrcTerminal   1
+              DstComponent  "Mux20"
+              DstTerminal   23
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "From35"
+              SrcTerminal   1
+              DstComponent  "Mux20"
+              DstTerminal   24
+            }
+            Connection {
+              Type          Signal
+              SrcComponent  "Mux20"
+              SrcTerminal   1
+              Points        [290, 520; 290, 105]
+              DstComponent  "Optimization"
+              DstTerminal   2
             }
           }
         }
@@ -22207,6 +23040,21 @@ Plecs {
           }
         }
         Component {
+          Type          Function
+          Name          "Sat_m"
+          Show          off
+          Position      [663, 300]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Frame         [-12, -8; 12, 8]
+          Parameter {
+            Variable      "f(u)"
+            Value         "min(1,max(0,u[1]))"
+            Show          off
+          }
+        }
+        Component {
           Type          Sum
           Name          "Sum5"
           Show          off
@@ -24204,6 +25052,13 @@ Plecs {
           Type          Signal
           SrcComponent  "Divide1"
           SrcTerminal   1
+          DstComponent  "Sat_m"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Sat_m"
+          SrcTerminal   2
           Points        [695, 300]
           Branch {
             DstComponent  "AvgA+"
@@ -24295,6 +25150,21 @@ Plecs {
           Parameter {
             Variable      "DataTypeOverflowMode"
             Value         "1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Function
+          Name          "Sat_m"
+          Show          off
+          Position      [663, 300]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Frame         [-12, -8; 12, 8]
+          Parameter {
+            Variable      "f(u)"
+            Value         "min(1,max(0,u[1]))"
             Show          off
           }
         }
@@ -26038,6 +26908,13 @@ Plecs {
           Type          Signal
           SrcComponent  "Divide1"
           SrcTerminal   1
+          DstComponent  "Sat_m"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Sat_m"
+          SrcTerminal   2
           Points        [695, 300]
           Branch {
             DstComponent  "AvgA+"
@@ -26259,6 +27136,21 @@ Plecs {
           Parameter {
             Variable      "DataTypeOverflowMode"
             Value         "1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Function
+          Name          "Sat_m"
+          Show          off
+          Position      [663, 300]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Frame         [-12, -8; 12, 8]
+          Parameter {
+            Variable      "f(u)"
+            Value         "min(1,max(0,u[1]))"
             Show          off
           }
         }
@@ -28002,6 +28894,13 @@ Plecs {
           Type          Signal
           SrcComponent  "Divide1"
           SrcTerminal   1
+          DstComponent  "Sat_m"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Sat_m"
+          SrcTerminal   2
           Points        [695, 300]
           Branch {
             DstComponent  "AvgA+"
@@ -28223,6 +29122,21 @@ Plecs {
           Parameter {
             Variable      "DataTypeOverflowMode"
             Value         "1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Function
+          Name          "Sat_m"
+          Show          off
+          Position      [663, 300]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Frame         [-12, -8; 12, 8]
+          Parameter {
+            Variable      "f(u)"
+            Value         "min(1,max(0,u[1]))"
             Show          off
           }
         }
@@ -30024,6 +30938,13 @@ Plecs {
           Type          Signal
           SrcComponent  "Divide1"
           SrcTerminal   1
+          DstComponent  "Sat_m"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Sat_m"
+          SrcTerminal   2
           Points        [695, 300]
           Branch {
             DstComponent  "AvgA+"
@@ -30251,6 +31172,21 @@ Plecs {
           Parameter {
             Variable      "DataTypeOverflowMode"
             Value         "1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Function
+          Name          "Sat_m"
+          Show          off
+          Position      [663, 300]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Frame         [-12, -8; 12, 8]
+          Parameter {
+            Variable      "f(u)"
+            Value         "min(1,max(0,u[1]))"
             Show          off
           }
         }
@@ -31994,6 +32930,13 @@ Plecs {
           Type          Signal
           SrcComponent  "Divide1"
           SrcTerminal   1
+          DstComponent  "Sat_m"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Sat_m"
+          SrcTerminal   2
           Points        [695, 300]
           Branch {
             DstComponent  "AvgA+"
@@ -32215,6 +33158,21 @@ Plecs {
           Parameter {
             Variable      "DataTypeOverflowMode"
             Value         "1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Function
+          Name          "Sat_m"
+          Show          off
+          Position      [663, 300]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Frame         [-12, -8; 12, 8]
+          Parameter {
+            Variable      "f(u)"
+            Value         "min(1,max(0,u[1]))"
             Show          off
           }
         }
@@ -33958,6 +34916,13 @@ Plecs {
           Type          Signal
           SrcComponent  "Divide1"
           SrcTerminal   1
+          DstComponent  "Sat_m"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Sat_m"
+          SrcTerminal   2
           Points        [695, 300]
           Branch {
             DstComponent  "AvgA+"
@@ -41990,7 +42955,7 @@ Plecs {
       SrcComponent  "V_3ph1"
       SrcTerminal   1
       DstComponent  "3ph Meter"
-      DstTerminal   6
+      DstTerminal   4
     }
     Connection {
       Type          Wire
@@ -42004,7 +42969,7 @@ Plecs {
       SrcComponent  "V_3ph1"
       SrcTerminal   3
       DstComponent  "3ph Meter"
-      DstTerminal   4
+      DstTerminal   6
     }
     Connection {
       Type          Signal
