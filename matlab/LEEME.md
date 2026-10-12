@@ -6,15 +6,9 @@ Modelo independiente de PLECS, construido solo con las ecuaciones de:
 
 Usa la red y los mismos valores numéricos que la simulación de PLECS, con pesos fijos (sin λΔ adaptativo). Funciona en MATLAB y en GNU Octave.
 
-## Archivos
+## Archivo
 
-| Archivo | Qué hace |
-|---|---|
-| `parametros_mmc.m` | Valores numéricos (iguales a los de PLECS) y ganancias de los PI |
-| `mmc_mpc_paper.m` | Simulación completa |
-| `exportar_csv.m` | Guarda los resultados con los mismos encabezados que los CSV de PLECS |
-| `comparar_con_plecs.m` | Tabla de métricas y gráficos PLECS contra MATLAB |
-| `ejecutar_modelo.m` | Ejemplo de uso |
+Todo está en `mmc_paper.m`: la función principal y, como subfunciones, los parámetros (`parametros`), la simulación (`simular`), la exportación a CSV con los encabezados de PLECS (`exportar_csv`) y la comparación (`comparar`).
 
 ## Qué sale del paper
 
@@ -49,10 +43,10 @@ Cada cluster se modela promediado, con sus celdas balanceadas, como supone el pa
 ## Uso
 
 ```matlab
-p = parametros_mmc();
-out = mmc_mpc_paper(p);
-exportar_csv(out, 'resultados_matlab');
-comparar_con_plecs({'1.csv','2.csv','3.csv','4.csv','5.csv'}, 'resultados_matlab', 5, 10);
+out = mmc_paper();                                  % simula y guarda los CSV en resultados_matlab
+out = mmc_paper({'1.csv','2.csv','3.csv','4.csv','5.csv'});   % además compara con PLECS (5 a 10 s)
+out = mmc_paper({}, 'restricciones_cluster', false); % cualquier campo de parametros, en pares nombre, valor
+out = mmc_paper(plecs, 'imax', 18, 't1', 5, 't2', 10, 'carpeta', 'otra_carpeta');
 ```
 
 Los cinco CSV de PLECS van en este orden:
@@ -61,3 +55,5 @@ Los cinco CSV de PLECS van en este orden:
 3. Las seis tensiones de celda.
 4. iΣαβ (3ph->srf3).
 5. Estados vC (3ph->srf5).
+
+Para cambiar un valor de forma permanente, edítalo en la subfunción `parametros`.

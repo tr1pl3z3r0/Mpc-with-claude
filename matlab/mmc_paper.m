@@ -1,6 +1,122 @@
-function out = mmc_mpc_paper(p)
-%MMC_MPC_PAPER Simula el MMC con el CCS-MPC de dos etapas conectado a la red.
-%   out = mmc_mpc_paper(p) usa los parametros p (por defecto parametros_mmc()).
+function out = mmc_paper(plecs, varargin)
+%MMC_PAPER Modelo del MMC con CCS-MPC de dos etapas, todo en un archivo.
+%   Modelo independiente de PLECS, construido solo con las ecuaciones de
+%   Arias-Esquivel et al., "Continuous Control Set Model Predictive Control of
+%   a Modular Multilevel Converter for Drive Applications", IEEE TIE, 2023,
+%   con la red y los mismos valores numericos de la simulacion PLECS.
+%   Pesos fijos (sin adaptacion de lambda_Delta). Funciona en MATLAB y Octave.
+%
+%   out = mmc_paper()
+%       Simula con los parametros por defecto (ver parametros, abajo) y guarda
+%       los CSV en la carpeta 'resultados_matlab'.
+%   out = mmc_paper(plecs)
+%       Ademas compara con los 5 CSV de PLECS. plecs es un cell array con las
+%       rutas en este orden: Gain9/Gain14, potencias, tensiones de celda,
+%       iSigma (3ph->srf3), estados vC (3ph->srf5).
+%   out = mmc_paper(plecs, 'nombre', valor, ...)
+%       Cambia parametros (cualquier campo de parametros) u opciones:
+%         'carpeta'  carpeta de salida de los CSV (por defecto 'resultados_matlab')
+%         't1', 't2' ventana de comparacion en s (por defecto 5 y 10)
+%       Ejemplos:
+%         mmc_paper({}, 'restricciones_cluster', false)   % sin las ecs. (22)-(24)
+%         mmc_paper({}, 'imax', 18)                       % limites de corriente (15)-(17)
+%         mmc_paper({}, 'retardo', true)                  % retardo de computo compensado
+%         mmc_paper({}, 'Tsim', 2)                        % simulacion mas corta
+
+if nargin < 1, plecs = {}; end
+p = parametros();
+carpeta = 'resultados_matlab'; t1 = 5; t2 = 10;
+if mod(numel(varargin), 2) ~= 0, error('Los parametros van en pares nombre, valor.'); end
+for q = 1:2:numel(varargin)
+    nom = varargin{q}; val = varargin{q+1};
+    switch nom
+        case 'carpeta', carpeta = val;
+        case 't1', t1 = val;
+        case 't2', t2 = val;
+        otherwise
+            if ~isfield(p, nom), error('Parametro desconocido: %s', nom); end
+            p.(nom) = val;
+    end
+end
+
+out = simular(p);
+exportar_csv(out, carpeta);
+fprintf('Resultados guardados en %s\n', carpeta);
+if ~isempty(plecs)
+    comparar(plecs, carpeta, t1, t2);
+end
+end
+
+%% =====================================================================
+%% PARAMETROS
+%% =====================================================================
+function p = parametros()
+%PARAMETROS Parametros del modelo MATLAB del MMC con CCS-MPC.
+%   Los valores numericos son los mismos de la simulacion PLECS ("trapezoide y
+%   con 2V0"); la estructura del modelo y del control sale solo del paper:
+%   Arias-Esquivel et al., "Continuous Control Set Model Predictive Control of
+%   a Modular Multilevel Converter for Drive Applications", IEEE TIE, 2023.
+
+% ---------------------------------------------------------------- Convertidor
+p.Vdc     = 450;        % tension del puerto DC [V]
+p.n       = 3;          % submodulos por cluster
+p.C       = 1;          % capacitancia de cada submodulo [F]
+p.vCref   = 150;        % referencia de tension de cada submodulo, vC* [V]
+p.vC_init = 150;        % tension inicial de cada submodulo [V]
+p.L       = 2.5e-3;     % inductancia de cluster [H]
+
+% ---------------------------------------------------------------- Red (puerto AC)
+p.Eg = 20;              % amplitud de la tension de fase de la red [V]
+p.fe = 4;               % frecuencia de la red [Hz]
+p.Rl = 1;               % resistencia de linea [ohm]
+p.Ll = 1e-3;            % inductancia de linea [H]
+p.id_ref = 16;          % referencia de corriente d (orientada con la tension de red) [A]
+p.iq_ref = 2;           % referencia de corriente q [A]
+
+% ---------------------------------------------------------------- Simulacion
+p.Ts   = 100e-6;        % periodo de muestreo del control [s]
+p.Tsim = 10;            % tiempo simulado [s]
+p.nsub = 5;             % subpasos RK4 de la planta por periodo de muestreo
+
+% ---------------------------------------------------------------- Modo comun, ec. (8) y Fig. 3a
+p.f0 = 100;             % frecuencia de v0 [Hz]
+p.Tr = 1e-3;            % duracion de las rampas del trapecio [s]
+p.fn = 100;             % frecuencia nominal en la ec. (8): V0 = 0.8*Vdc/2*(1 - fe/fn) = 172.8 V
+
+% ---------------------------------------------------------------- MPC externo, ecs. (11)-(12) (pesos fijos)
+p.Q = diag([25 25 1 1 1]);   % [lambda_alfa^Delta, lambda_beta^Delta, lambda_0^Delta, lambda_alfa^Sigma, lambda_beta^Sigma]
+p.R = diag([1e-5 1e-5]);     % [lambda_alfa^U, lambda_beta^U]
+p.imax = inf;                % limite de corriente de cluster, ecs. (15)-(17); inf = sin limite
+
+% ---------------------------------------------------------------- MPC interno, ec. (19)
+p.Qi = diag([1 1]);          % [lambda_alfa^Sigma', lambda_beta^Sigma']
+p.Ri = diag([1e-3 1e-3]);    % [lambda_alfa^U', lambda_beta^U']
+p.restricciones_cluster = true;   % ecs. (22)-(24)
+
+% ---------------------------------------------------------------- Retardo de computo
+p.retardo = false;      % true: el control calculado en k se aplica en k+1, con
+                        % compensacion de un paso en ambos MPC (ref. [33] del paper)
+
+% ---------------------------------------------------------------- Puertos AC y DC (Fig. 3)
+% Ganancias disenadas desde el modelo de la ec. (4), no copiadas de PLECS.
+Le = p.L + 2*p.Ll;                 % inductancia vista por la corriente AC
+wc = 2*pi*100;                     % ancho de banda del lazo de corriente AC [rad/s]
+p.kp_ac = Le*wc;                   % cancela el polo (L+2Ll)s + 2Rl
+p.ki_ac = 2*p.Rl*wc;
+wi = 2*pi*200;                     % ancho de banda del lazo de idc [rad/s]
+p.kp_dc = (p.L/3)*wi;              % planta (L/3) s
+p.ki_dc = p.kp_dc*wi/5;
+Kv = p.Vdc/(6*p.n*p.C*p.vCref);    % d(vC0Sigma)/dt = Kv*idc + ... (ecs. (6) y (7d))
+wv = 10; zv = 0.7;                 % lazo de energia: wn = 10 rad/s, zeta = 0.7
+p.kp_v = 2*zv*wv/Kv;
+p.ki_v = wv^2/Kv;
+end
+
+%% =====================================================================
+%% SIMULACION (planta y control segun el paper)
+%% =====================================================================
+function out = simular(p)
+%SIMULAR Simula el MMC con el CCS-MPC de dos etapas conectado a la red.
 %
 %   Todo el modelo sale del paper (Arias-Esquivel et al., IEEE TIE 2023):
 %   - Planta: transformacion Sigma-Delta-alfa-beta-0 (ecs. (1)-(2)), dinamica de
@@ -18,8 +134,6 @@ function out = mmc_mpc_paper(p)
 %   Convenciones: celdas y clusters en orden [Pa Pb Pc Na Nb Nc]; tensiones de
 %   capacitor por submodulo; Sigma = (P+N)/2, Delta = P-N; Clarke invariante en
 %   amplitud.
-
-if nargin < 1, p = parametros_mmc(); end
 
 Ts = p.Ts; N = round(p.Tsim/Ts); h = Ts/p.nsub;
 K  = Ts/(p.n*p.C*p.vCref);                      % K de la ec. (9)
@@ -298,4 +412,157 @@ for q = 1:numel(conj)
     end
 end
 if ~isempty(mejor), u = mejor; end
+end
+
+%% =====================================================================
+%% EXPORTACION A CSV CON EL FORMATO DE PLECS
+%% =====================================================================
+function exportar_csv(out, carpeta)
+%EXPORTAR_CSV Guarda los resultados con el mismo formato que los CSV de PLECS.
+%   exportar_csv(out, carpeta) escribe en la carpeta:
+%     1_gain9_gain14.csv     "Time / s","Gain9","Gain14"
+%     2_potencias.csv        "Time / s","pαΣ","pβΣ","p0Σ","pαΔ","pβΔ","p0Δ"
+%     3_tensiones_celda.csv  "Time / s", 6 x "Vm:Measured voltage" (Pa Pb Pc Na Nb Nc)
+%     4_corriente_circ.csv   "Time / s","3ph->srf3:1:1","3ph->srf3:1:2"
+%     5_estados_vc.csv       "Time / s","3ph->srf5:1:1",... (Sigma alfa,beta,0 y Delta alfa,beta,0)
+
+if nargin < 2, carpeta = 'resultados_matlab'; end
+if ~exist(carpeta, 'dir'), mkdir(carpeta); end
+t = out.t;
+escribir(fullfile(carpeta, '1_gain9_gain14.csv'), {'Gain9','Gain14'}, [t out.g9 out.g14]);
+escribir(fullfile(carpeta, '2_potencias.csv'), ...
+    {'pαΣ','pβΣ','p0Σ','pαΔ','pβΔ','p0Δ'}, [t out.p]);
+escribir(fullfile(carpeta, '3_tensiones_celda.csv'), repmat({'Vm:Measured voltage'}, 1, 6), [t out.vC]);
+escribir(fullfile(carpeta, '4_corriente_circ.csv'), {'3ph->srf3:1:1','3ph->srf3:1:2'}, [t out.iS]);
+escribir(fullfile(carpeta, '5_estados_vc.csv'), ...
+    {'3ph->srf5:1:1','3ph->srf5:1:2','3ph->srf5:1:3','3ph->srf5:3:1','3ph->srf5:3:2','3ph->srf5:3:3'}, ...
+    [t out.xS out.xD]);
+end
+
+function escribir(archivo, nombres, datos)
+f = fopen(archivo, 'w');
+fwrite(f, uint8(unicode2native(['"Time / s"' sprintf(',"%s"', nombres{:}) sprintf('\n')], 'UTF-8')));
+fmt = ['%.10g' repmat(',%.10g', 1, size(datos,2)-1) '\n'];
+fprintf(f, fmt, datos');
+fclose(f);
+end
+
+%% =====================================================================
+%% COMPARACION CON PLECS
+%% =====================================================================
+function T = comparar(arch_plecs, arch_matlab, t1, t2)
+%COMPARAR Compara los CSV de PLECS con los del modelo MATLAB.
+%   T = comparar(arch_plecs, arch_matlab) recibe dos cell arrays de
+%   5 rutas cada uno, en este orden (el mismo de los exportes de PLECS):
+%     1) Gain9, Gain14            2) pαΣ, pβΣ, p0Σ, pαΔ, pβΔ, p0Δ
+%     3) 6 tensiones de celda     4) iΣα, iΣβ (3ph->srf3)
+%     5) estados vC: Σαβ0 y Δαβ0 (3ph->srf5)
+%   Si arch_matlab es una carpeta, usa los nombres de exportar_csv.
+%   t1, t2: ventana de analisis en segundos (por defecto 5 a 10 s).
+%
+%   Las metricas no dependen de la fase de la red ni del signo de v0, asi que
+%   sirven aunque las dos simulaciones no esten sincronizadas.
+
+if nargin < 3, t1 = 5; end
+if nargin < 4, t2 = 10; end
+if ischar(arch_matlab)
+    c = arch_matlab;
+    arch_matlab = {fullfile(c,'1_gain9_gain14.csv'), fullfile(c,'2_potencias.csv'), ...
+        fullfile(c,'3_tensiones_celda.csv'), fullfile(c,'4_corriente_circ.csv'), fullfile(c,'5_estados_vc.csv')};
+end
+Ts = 100e-6;
+P = cargar(arch_plecs, t1, t2, Ts);
+M = cargar(arch_matlab, t1, t2, Ts);
+mp = metricas(P); mm = metricas(M);
+
+nombres = fieldnames(mp);
+fprintf('\n%-44s %12s %12s %9s\n', 'Metrica (ventana de analisis)', 'PLECS', 'MATLAB', 'Dif. %');
+for q = 1:numel(nombres)
+    a = mp.(nombres{q}); b = mm.(nombres{q});
+    fprintf('%-44s %12.4g %12.4g %9.1f\n', strrep(nombres{q}, '_', ' '), a, b, 100*(b - a)/max(abs(a), eps));
+end
+T = struct('metrica', {nombres}, 'plecs', {struct2cell(mp)}, 'matlab', {struct2cell(mm)});
+
+% ---------------- graficos: 30 ms y 0,5 s al inicio de la ventana
+try
+    graficar(P, M);
+catch err
+    fprintf('No se pudieron dibujar los graficos: %s\n', err.message);
+end
+end
+
+% =====================================================================
+function graficar(P, M)
+for v = 1:2
+    if v == 1, dur = 0.03; else, dur = 0.5; end
+    figure('Name', sprintf('PLECS vs MATLAB (%g s)', dur));
+    sen = {'pαΔ [W]', @(D) D.p(:,4); 'pαΣ [W]', @(D) D.p(:,1); 'iΣα [A]', @(D) D.iS(:,1); 'VcαΔ [V]', @(D) D.xD(:,1)};
+    for s = 1:size(sen,1)
+        subplot(size(sen,1), 1, s); hold on; grid on;
+        kp = P.t < P.t(1) + dur; km = M.t < M.t(1) + dur;
+        f = sen{s,2};
+        yp = f(P); ym = f(M);
+        plot(P.t(kp) - P.t(1), yp(kp), 'b');
+        plot(M.t(km) - M.t(1), ym(km), 'r');
+        ylabel(sen{s,1});
+        if s == 1, legend('PLECS', 'MATLAB'); end
+    end
+    xlabel('t - t_1 [s]');
+end
+end
+
+% =====================================================================
+function D = cargar(arch, t1, t2, Ts)
+tg = (t1:Ts:t2-Ts)';
+D.t = tg;
+x = leer(arch{1}, tg); D.g9 = x(:,1); D.g14 = x(:,2);
+D.p  = leer(arch{2}, tg);
+D.vC = leer(arch{3}, tg);
+D.iS = leer(arch{4}, tg);
+x = leer(arch{5}, tg); D.xS = x(:,1:3); D.xD = x(:,4:6);
+end
+
+function y = leer(archivo, tg)
+d = dlmread(archivo, ',', 1, 0);
+[t, idx] = unique(d(:,1), 'last');      % PLECS puede repetir instantes (paso variable)
+y = interp1(t, d(idx, 2:end), tg, 'linear');
+end
+
+function m = metricas(D)
+Ts = D.t(2) - D.t(1); n10 = round(0.01/Ts);
+amp = @(x, f) ajuste(D.t, x, f);
+m.amplitud_mitad_Vdc_i_alfa_W = max(abs(D.g9));
+pDa_lenta = movmean_simple(D.p(:,4), n10);
+m.residuo_4Hz_p_alfa_Delta_pct = 100*amp(pDa_lenta, 4)/max(abs(D.g9));
+m.pico_i_Sigma_alfa_A = max(abs(D.iS(:,1)));
+m.rms_i_Sigma_alfa_A = sqrt(mean(D.iS(:,1).^2));
+m.componente_8Hz_i_Sigma_alfa_A = amp(movmean_simple(D.iS(:,1), n10), 8);
+m.Vc_alfa_Delta_4Hz_V = amp(D.xD(:,1), 4);
+m.Vc_alfa_Delta_pp_V = max(D.xD(:,1)) - min(D.xD(:,1));
+m.Vc_alfa_Sigma_8Hz_V = amp(D.xS(:,1), 8);
+m.Vc_alfa_Sigma_pp_V = max(D.xS(:,1)) - min(D.xS(:,1));
+m.Vc_0_Delta_medio_V = mean(D.xD(:,3));
+m.Vc_0_Sigma_medio_V = mean(D.xS(:,3));
+m.p_0_Delta_nivel_W = mean(abs(D.p(:,6)));
+m.p_0_Sigma_medio_W = mean(D.p(:,3));
+m.p_alfa_Sigma_lenta_8Hz_W = amp(movmean_simple(D.p(:,1), n10), 8);
+m.rizado_celda_Pa_pp_V = max(D.vC(:,1)) - min(D.vC(:,1));
+end
+
+function a = ajuste(t, x, f)
+w = 2*pi*f;
+A = [cos(w*t) sin(w*t) ones(size(t))];
+ok = ~isnan(x);
+c = A(ok,:)\x(ok);
+a = hypot(c(1), c(2));
+end
+
+function y = movmean_simple(x, n)
+% Promedio movil centrado de n muestras (un periodo de v0), con NaN en los bordes.
+c = cumsum([0; x]);
+y = nan(size(x));
+h = floor(n/2);
+for k = h+1:numel(x)-n+h+1
+    y(k) = (c(k-h+n) - c(k-h))/n;
+end
 end
