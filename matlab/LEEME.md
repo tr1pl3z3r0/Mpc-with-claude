@@ -37,7 +37,7 @@ Cada cluster se modela promediado, con sus celdas balanceadas, como supone el pa
   - V0 = 0,8·Vdc/2·(1 − fe/fn) con fn = 100 Hz, que da 172,8 V;
   - referencias id = 16 A e iq = 2 A.
 - **Entradas del MPC externo:** usa las referencias de corriente AC, de idc y de tensión AC, como en la Fig. 2.
-- **Retardo de cómputo:** por defecto el control se aplica en el mismo período, como en PLECS. Con `p.retardo = true` se aplica en el siguiente, con la compensación de un paso de la ref. [33].
+- **Retardo de cómputo:** por defecto el control se aplica en el mismo período, como en PLECS. Con `mmc_paper({}, 'retardo', true)` se aplica en el siguiente, con la compensación de un paso de la ref. [33].
 - **Solución de los QP:** exacta, enumerando los conjuntos activos posibles. Da el mismo óptimo que cualquier método de conjunto activo.
 
 ## Uso
